@@ -54,6 +54,7 @@ public class Model extends JPanel implements ActionListener {
 	// 2 = Obere Mauer
 	// 4 = Rechte Mauer
 	// 16 = Weiße Punkte
+	// z.B. links oben -> 16+1+2= 19
 	private final short levelData[] = {
 			19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
 	        17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20,
@@ -126,7 +127,7 @@ public class Model extends JPanel implements ActionListener {
     //Startbildschirm anzeigen 
     private void showIntroScreen(Graphics2D g2d) {
  
-    	String start = "Press SPACE to start";
+    	String start = "Drücke Leertaste zum starten";
         g2d.setColor(Color.yellow);
         g2d.drawString(start, (SCREEN_SIZE)/4, 150);
     }
@@ -169,7 +170,7 @@ public class Model extends JPanel implements ActionListener {
             //Prüft ob der aktuelle Speed weniger ist, als der max Speed...wenn ja erweitere den Speed
             if (currentSpeed < maxSpeed) {
                 currentSpeed++;
-            }
+            }//nach dem das Spiel gewonnen wurde, kommt die Meldung, dass man sich auf das nächste Spiel vorbereiten soll
             initLevel();
             JOptionPane.showMessageDialog(null, "Sehr Gut! Bereite dich auf das nächste Level:)");
 
@@ -182,6 +183,7 @@ public class Model extends JPanel implements ActionListener {
 
         if (lives == 0) {
             inGame = false;
+            //falls das Spiel verloren wird, kommmt diese Meldung
             JOptionPane.showMessageDialog(null, "Spiel zu Ende! :(");
         }
 
