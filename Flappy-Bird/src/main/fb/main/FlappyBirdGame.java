@@ -74,7 +74,7 @@ public class FlappyBirdGame extends Canvas implements Runnable
         FlappyBirdGame.img_gameover = GraphicsLoader.loadGraphics("gameover.png");
         FlappyBirdGame.background = GraphicsLoader.loadGraphics("background.png");
         FlappyBirdGame.ground = new Ground();
-        FlappyBirdGame.bird = new Bird(50, 50, 51, 36);
+        FlappyBirdGame.bird = Bird.getBird();
         FlappyBirdGame.startButton = new Button(138, 200, 156, 87, GraphicsLoader.loadGraphics("playbutton.png"));
     }
     

@@ -14,6 +14,7 @@ import main.fb.supers.GameObject;
  */
 public class Bird extends GameObject
 {
+    private static Bird bird; //new Bird(50, 50, 51, 36)
     Animation animation;
     public float gravity;
     public float maxSpeed;
@@ -26,7 +27,7 @@ public class Bird extends GameObject
      * @param height - the height of the bird
 	 * @see Bird#Bird(int,int,int,int)
 	 */
-    public Bird(final int x, final int y, final int width, final int height) {
+    private Bird(final int x, final int y, final int width, final int height) {
         super(x, y, width, height);
         this.gravity = 0.3f;
         this.maxSpeed = 12.0f;
@@ -36,6 +37,13 @@ public class Bird extends GameObject
         }
         (this.animation = new Animation(this, 100L, true, images)).start();
         ObjectHandler.addObject((GameObject)this);
+    }
+
+    public static Bird getBird() {
+        if(bird == null) {
+            bird = new Bird(50, 50, 51, 36);
+        }
+        return bird;
     }
     
     @Override
