@@ -14,7 +14,7 @@ import main.fb.supers.GameObject;
  */
 public class Bird extends GameObject
 {
-    private static Bird bird; //new Bird(50, 50, 51, 36)
+    private static Bird bird;
     Animation animation;
     public float gravity;
     public float maxSpeed;
