@@ -11,9 +11,11 @@ import main.fb.supers.GameObject;
 public class ObjectHandler
 {
     public static LinkedList<GameObject> list;
+    public static int index;
     
     static {
         ObjectHandler.list = new LinkedList<GameObject>();
+        ObjectHandler.index = -1;
     }
     
     public static void addObject(final GameObject o) {
@@ -38,5 +40,13 @@ public class ObjectHandler
             temp = ObjectHandler.list.get(i);
             temp.tick();
         }
+    }
+
+    public static boolean hasNext() {
+        return ObjectHandler.index < ObjectHandler.list.size();
+      }
+   
+    public GameObject next() {
+        return ObjectHandler.list.get(ObjectHandler.index);
     }
 }
