@@ -11,9 +11,11 @@ import main.fb.supers.GameObject;
 public class ObjectHandler
 {
     public static LinkedList<GameObject> list;
+    public static int index;
     
     static {
         ObjectHandler.list = new LinkedList<GameObject>();
+        ObjectHandler.index = 0;
     }
     
     public static void addObject(final GameObject o) {
@@ -26,17 +28,27 @@ public class ObjectHandler
     
     public static void render(final Graphics g) {
         GameObject temp = null;
-        for (int i = 0; i < ObjectHandler.list.size(); ++i) {
-            temp = ObjectHandler.list.get(i);
+        while (hasNext()) {
+            temp = next();
             temp.render(g);
         }
+        ObjectHandler.index = 0;
     }
     
     public static void tick() {
         GameObject temp = null;
-        for (int i = 0; i < ObjectHandler.list.size(); ++i) {
-            temp = ObjectHandler.list.get(i);
+        while (hasNext()) {
+            temp = next();
             temp.tick();
         }
+        ObjectHandler.index = 0;
+    }
+
+    public static boolean hasNext() {
+        return ObjectHandler.index < ObjectHandler.list.size();
+      }
+   
+    public static GameObject next() {
+        return ObjectHandler.list.get(ObjectHandler.index++);
     }
 }
