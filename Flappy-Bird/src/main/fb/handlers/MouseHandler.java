@@ -18,7 +18,7 @@ public class MouseHandler implements MouseListener
     
     @Override
     public void mousePressed(final MouseEvent e) {
-        if (Button.checkCollision(e.getX(), e.getY(), FlappyBirdGame.startButton) && FlappyBirdGame.gameover) {
+        if (Button.mouseOver(e.getX(), e.getY(), FlappyBirdGame.startButton) && FlappyBirdGame.gameover) {
             FlappyBirdGame.startButton.pressed = true;
             ObjectHandler.list.clear();
             ObjectHandler.addObject((GameObject)FlappyBirdGame.bird);

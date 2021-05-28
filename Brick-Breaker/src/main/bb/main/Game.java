@@ -156,7 +156,7 @@ public class Game extends JPanel {
 						if(powerups[i].powerup == 3) {   //fire ball
 							for (Ball ball : balls) {
 								if (ball != null) {
-									ball.burn(4);
+									ball.setOnFire(4);
 									break;
 								}
 							}

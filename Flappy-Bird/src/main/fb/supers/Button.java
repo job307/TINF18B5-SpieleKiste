@@ -32,7 +32,7 @@ public class Button
         this.image = image;
     }
     
-    public static boolean checkCollision(final int mouseX, final int mouseY, final Button btn) {
+    public static boolean mouseOver(final int mouseX, final int mouseY, final Button btn) {
         return mouseX >= btn.x && mouseX <= btn.x + btn.width && mouseY >= btn.y && mouseY <= btn.y + btn.height;
     }
     

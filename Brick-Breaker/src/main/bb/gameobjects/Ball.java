@@ -80,7 +80,7 @@ public class Ball {
 		return this.height;
 	}
 
-	public void burn(int seconds) {
+	public void setOnFire(int seconds) {
 		if(!onFire) {
 			fireSec = seconds;
 			onFire = true;
