@@ -55,15 +55,22 @@ public class Model extends JPanel implements ActionListener {
 	// 4 = Rechte Mauer
 	// 16 = Weiße Punkte
 	// z.B. links oben -> 16+1+2= 19
-	private final short levelData[] = { 19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22, 17, 16, 16, 16, 16,
-			16, 16, 16, 16, 16, 16, 16, 16, 16, 20, 17, 24, 24, 24, 24, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20, 21, 0,
-			0, 0, 0, 0, 17, 16, 16, 16, 16, 16, 16, 16, 20, 17, 18, 22, 0, 19, 18, 16, 16, 16, 16, 24, 16, 16, 24, 20,
-			17, 16, 20, 0, 17, 16, 16, 16, 16, 20, 0, 17, 20, 0, 21, 17, 16, 20, 0, 17, 16, 16, 16, 16, 20, 0, 17, 20,
-			0, 21, 17, 16, 16, 18, 16, 16, 16, 16, 16, 20, 0, 17, 20, 0, 21, 17, 16, 16, 24, 24, 24, 16, 16, 16, 16, 18,
-			16, 16, 18, 20, 17, 16, 20, 0, 0, 0, 17, 16, 16, 16, 16, 16, 16, 16, 20, 17, 16, 20, 0, 19, 18, 16, 16, 16,
-			16, 16, 16, 16, 16, 20, 17, 16, 20, 0, 25, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20, 17, 16, 20, 0, 0, 0, 17,
-			16, 16, 16, 16, 16, 16, 16, 20, 17, 16, 16, 18, 18, 18, 16, 16, 16, 16, 16, 16, 16, 16, 20, 25, 24, 24, 24,
-			24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 28 };
+	private final short levelData[] = {
+			19, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 22,
+			17, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+			17, 24, 24, 24, 24, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+			21,  0,  0,  0,  0,  0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
+			17, 18, 22,  0, 19, 18, 16, 16, 16, 16, 24, 16, 16, 24, 20,
+			17, 16, 20,  0, 17, 16, 16, 16, 16, 20,  0, 17, 20,  0, 21,
+			17, 16, 20,  0, 17, 16, 16, 16, 16, 20,  0, 17, 20,  0, 21,
+			17, 16, 16, 18, 16, 16, 16, 16, 16, 20,  0, 17, 20,  0, 21,
+			17, 16, 16, 24, 24, 24, 16, 16, 16, 16, 18, 16, 16, 18, 20,
+			17, 16, 20,  0,  0,  0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
+			17, 16, 20,  0, 19, 18, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+			17, 16, 20,  0, 25, 24, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+			17, 16, 20,  0,  0,  0, 17, 16, 16, 16, 16, 16, 16, 16, 20,
+			17, 16, 16, 18, 18, 18, 16, 16, 16, 16, 16, 16, 16, 16, 20,
+			25, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 28 };
 
 	public Model() {
 
@@ -76,6 +83,7 @@ public class Model extends JPanel implements ActionListener {
 
 	// Pacman images laden
 	private void loadImages() {
+		//falls die Images nicht angezeigt werden sollten, kann es sein, dass man sein eigenes Verzeichnispfad eingeben/ändern muss
 		down = new ImageIcon("C:\\Users\\EREN\\eclipse-workspace\\Pacman\\src\\images/down.gif").getImage();
 		up = new ImageIcon("C:\\Users\\EREN\\eclipse-workspace\\Pacman\\src\\images/up.gif").getImage();
 		left = new ImageIcon("C:\\Users\\EREN\\eclipse-workspace\\Pacman\\src\\images/left.gif").getImage();
@@ -392,12 +400,14 @@ public class Model extends JPanel implements ActionListener {
 
 			ghostSpeed[i] = validSpeeds[random];
 		}
-
-		pacman_x = 7 * BLOCK_SIZE; // start position
+		//Start Postion
+		pacman_x = 7 * BLOCK_SIZE; 
 		pacman_y = 11 * BLOCK_SIZE;
-		pacmand_x = 0; // reset direction move
+		//Reseten -> bewegen
+		pacmand_x = 0; 
 		pacmand_y = 0;
-		req_dx = 0; // reset direction controls
+		//Reseten -> controls
+		req_dx = 0; 
 		req_dy = 0;
 		dying = false;
 	}
@@ -423,7 +433,7 @@ public class Model extends JPanel implements ActionListener {
 		g2d.dispose();
 	}
 
-	// Pacman bewegen mit Tastatur
+	// Tastaturpfeile integrierenn
 	class TAdapter extends KeyAdapter {
 
 		@Override
