@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Model extends JPanel implements ActionListener {
-	//test commit test test
+	
 	private Dimension d;
 	private final Font smallFont = new Font("Arial", Font.BOLD, 14);
 	private boolean inGame = false;
