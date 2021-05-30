@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		this.addKeyListener(new MyKeyAdapter());
 		startGame();
 	}
-
+	//starten des Spiels
 	public void startGame() {
 		newApple();
 		running = true;
@@ -46,7 +46,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		super.paintComponent(g);
 		draw(g);
 	}
-
+	//Aufbau des Spielfeldes
 	public void draw(Graphics g) {
 		if (running) {
 
@@ -79,13 +79,13 @@ public class GamePanel extends JPanel implements ActionListener {
 			gameOver(g);
 		}
 	}
-
+	//falls der Apfel gegessen worden ist, soll ein neuer aufauchen
 	public void newApple() {
 		appleX = random.nextInt((int)(SCREEN_WIDTH / UNIT_SIZE)) * UNIT_SIZE;
 		appleY = random.nextInt((int)(SCREEN_HEIGHT / UNIT_SIZE)) * UNIT_SIZE;
 
 	}
-
+	
 	public void move() {
 		for (int i = bodyParts; i > 0; i--) {
 			x[i] = x[i - 1];
@@ -108,7 +108,7 @@ public class GamePanel extends JPanel implements ActionListener {
 
 		}
 	}
-
+	//Prüfen ob der Apfel gegessen worden ist oder nicht
 	public void checkApple() {
 		if ((x[0] == appleX) && (y[0] == appleY)) {
 			bodyParts++;
@@ -116,7 +116,7 @@ public class GamePanel extends JPanel implements ActionListener {
 			newApple();
 		}
 	}
-
+	//Prüfen ob es irgendwo kollidiert hat
 	public void checkCollisions() {
 		// checks if head collides with body
 		for (int i = bodyParts; i > 0; i--) {
@@ -125,20 +125,20 @@ public class GamePanel extends JPanel implements ActionListener {
 
 			}
 		}
-		// check if head touches left border
+		// prüfen ob der linke rand berührt wurde
 		if (x[0] < 0) {
 			running = false;
 		}
-		// check if head touches left border
+		// prüfen ob der rechte rand berührt wurde
 		if (x[0] > SCREEN_WIDTH) {
 			running = false;
 		}
-		// check if head touches left border
+		// prüfen ob der obere rand berührt wurde
 		if (y[0] < 0) {
 			running = false;
 
 		}
-		// check if head touches left border
+		// prüfen ob der untere rand berührt wurde
 		if (y[0] > SCREEN_HEIGHT) {
 			running = false;
 		}
@@ -146,7 +146,7 @@ public class GamePanel extends JPanel implements ActionListener {
 			timer.stop();
 		}
 	}
-
+	//falls das Spiel zu ende ist, soll der Game over stehen, sowie auch die Punkteanzahl die man erreicht hat
 	public void gameOver(Graphics g) {
 		// Score
 		g.setColor(Color.red);
@@ -174,7 +174,7 @@ public class GamePanel extends JPanel implements ActionListener {
 		repaint();
 
 	}
-
+	//Eingabe der Tastaturpfeile, hoch-runter, links- rechts
 	public class MyKeyAdapter extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
