@@ -433,7 +433,7 @@ public class Model extends JPanel implements ActionListener {
 		g2d.dispose();
 	}
 
-	// Tastaturpfeile integrierenn
+	// Tastaturpfeile integrieren
 	class TAdapter extends KeyAdapter {
 
 		@Override
