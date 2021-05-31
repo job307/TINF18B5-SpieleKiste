@@ -1,15 +1,12 @@
 package main.fb.main;
 
 import java.awt.Graphics;
-import java.awt.Component;
 import java.awt.image.BufferStrategy;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseListener;
 import java.awt.event.KeyListener;
 import java.net.ServerSocket;
-
-import javax.swing.JFrame;
 
 import main.fb.gameobjects.Bird;
 import main.fb.gameobjects.Ground;
@@ -42,24 +39,7 @@ public class FlappyBirdGame extends Canvas implements Runnable
     ServerSocket serverSocket;
     
     public static void main(final String[] args) {
-        FlappyBirdGame game = new FlappyBirdGame();
-        JFrame jf = new JFrame();
-        try {
-            game.serverSocket = new ServerSocket(9999);
-        }
-        catch (Exception e) {
-            System.out.println("Spiel bereits gestartet!");
-            System.exit(0);
-        }
-        jf.setTitle("FlappyBird [Springen mit Leertaste]");
-        jf.pack();
-        jf.setSize(WIDTH + jf.getInsets().left + jf.getInsets().right, HEIGHT + jf.getInsets().top + jf.getInsets().bottom);
-        jf.setLocationRelativeTo(null);
-        jf.setResizable(false);
-        jf.setDefaultCloseOperation(3);
-        jf.setVisible(true);
-        jf.add((Component)game);
-        game.start();
+        new Window(WIDTH, HEIGHT, "FlappyBird [Springen mit Leertaste]", new FlappyBirdGame());
     }
     
     public synchronized void start() {
