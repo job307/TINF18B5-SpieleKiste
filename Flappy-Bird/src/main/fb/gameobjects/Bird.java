@@ -71,9 +71,6 @@ public class Bird extends GameObject
         this.animation.tick();
     }
     
-    public int sum(int x, int y){
-        return x+y;
-    }
     @Override
     public void render(final Graphics g) {
         this.animation.render(g);
